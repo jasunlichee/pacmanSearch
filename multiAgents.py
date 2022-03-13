@@ -135,7 +135,7 @@ class MultiPacmanAgent(MultiAgentSearchAgent):
             maxEval = -float(inf)
             maxAction = Directions.STOP
             for action in currentGameState.getLegalActions(agent):
-                eval = self.minimax(currentGameState.generateSuccessor(agent, action), depth, agent + 1)[0]
+                eval = self.minimax(currentGameState.generateSuccessor(agent, action), depth - 1, 1)[0]
                 if(eval > maxEval):
                     maxAction = action
                     maxEval = eval
