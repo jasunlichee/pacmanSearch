@@ -67,35 +67,7 @@ class ReflexAgent(Agent):
         to create a masterful evaluation function.
         """
         # Useful information you can extract from a GameState (pacman.py)
-        newPos = currentGameState.getPacmanPosition()
-        newFood = currentGameState.getFood().asList()
-
-        minFoodist = float('inf')
-        for food in newFood:
-            minFoodist = min(minFoodist, manhattanDistance(newPos, food))
-
-        ghostDist = 0
-        for ghost in currentGameState.getGhostPositions():
-            ghostDist = manhattanDistance(newPos, ghost)
-            if (ghostDist < 2):
-                return -float('inf')
-
-        foodLeft = currentGameState.getNumFood()
-        capsLeft = len(currentGameState.getCapsules())
-
-        foodLeftMultiplier = 950050
-        capsLeftMultiplier = 10000
-        foodDistMultiplier = 950
-
-        additionalFactors = 0
-        if currentGameState.isLose():
-            additionalFactors -= 50000
-        elif currentGameState.isWin():
-            additionalFactors += 50000
-
-        return 1.0/(foodLeft + 1) * foodLeftMultiplier + ghostDist + \
-            1.0/(minFoodist + 1) * foodDistMultiplier + \
-            1.0/(capsLeft + 1) * capsLeftMultiplier + additionalFactors
+        return 1.0
 
 def scoreEvaluationFunction(currentGameState, index):
     """
