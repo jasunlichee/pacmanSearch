@@ -184,14 +184,7 @@ class MultiPacmanAgent(MultiAgentSearchAgent):
             if (ghostDist < 3):
                 return -float(inf)
 
-        foodbits = currentGameState.getNumFood()
-        capsulesLeft = len(currentGameState.getCapsules())
-
-        foodLeftMultiplier = 950050
-        capsLeftMultiplier = 10000
-        foodDistMultiplier = 950
-
-        return 1.0/(foodbits + 1) * foodLeftMultiplier + ghostDist + 1.0/(fooddist + 1) * foodDistMultiplier + 1.0/(capsulesLeft + 1) * capsLeftMultiplier
+        return 1000000.0/(currentGameState.getNumFood() + 0.1) + ghostDist + 1000.0/(fooddist + 0.1) + 10000.0/(len(currentGameState.getCapsules()) + 0.1)
         
 class RandomAgent(MultiAgentSearchAgent):
     def getAction(self, gameState):
